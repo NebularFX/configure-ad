@@ -96,16 +96,56 @@ Create another VM, but this time use Windows 10 and name it "Client-1". Go to th
 </p>
 <br />
 
+<h3>Install Active Directory</h3>
+
 <p>
-<img src="https://i.imgur.com/Xvmv7Dk.png" height="80%" width="80%" alt="VM Settings"/>
+<img src="https://i.imgur.com/YKjfd1W.png" height="80%" width="80%" alt="Server Manager to Install AD"/>
 </p>
 <p>
-1234132 Server 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
+<img src="https://i.imgur.com/Sbveb3A.png" height="80%" width="80%" alt="Install AD"/>
+</p>
+<p>
+Now we can focus on installing Active Directory. First, open the DC-1 VM. You can open up command prompt and type hostname to quickly differntiate between both VMs. Head over to the server manager which can be found through the search bar or on the task bar. Next click on add roles and features. Here you will pretty much just click next until you get to server roles. This is where you will click on "Active Directory Domain Services". Just click next for the rest and install to finish.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/Xvmv7Dk.png" height="80%" width="80%" alt="VM Settings"/>
+<img src="https://i.imgur.com/priIfMu.png" height="80%" width="80%" alt="Promote server to domain controller"/>
+</p>
+<p>
+<img src="https://i.imgur.com/SxZFeHV.png" height="60%" width="60%" alt="Root Domain Name"/>
+</p>
+<p>
+In order to finish installing AD, we need to click on promote server to domain controller and then add a new forest where you will set your desired domain name.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/6yeflKg.png" height="80%" width="80%" alt="DSRM Password"/>
+</p>
+<p>
+You need to set a password here, but it won't be used for our purposes. You simply need to click next for the rest of the steps and then click install. Once it has installed, you will get notified that you will be signed out. This means you will need to reestablish the connection after you are disconnected from RDP.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/3k4raoi.png" height="60%" width="60%" alt="Sign in under the new domain"/>
+</p>
+<p>
+When you try to sign back in, use the domain name you used followed by a backslash and the username (lab.com\labuser). The password is still the same.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/Sbveb3A.png" height="80%" width="80%" alt="Install AD"/>
+</p>
+<p>
+1234123pus (make sure you use at least 2 otherwise it'll be slow).
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/Sbveb3A.png" height="80%" width="80%" alt="Install AD"/>
 </p>
 <p>
 1234123pus (make sure you use at least 2 otherwise it'll be slow).
