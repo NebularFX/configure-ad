@@ -137,17 +137,41 @@ When you try to sign back in, use the domain name you used followed by a backsla
 <br />
 
 <p>
-<img src="https://i.imgur.com/Sbveb3A.png" height="80%" width="80%" alt="Install AD"/>
+<img src="https://i.imgur.com/EOIk6jx.png" height="80%" width="80%" alt="Navigate to AD UandC"/>
 </p>
 <p>
-1234123pus (make sure you use at least 2 otherwise it'll be slow).
+Now we need to navigate to Active Directory Users and Computers
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/Sbveb3A.png" height="80%" width="80%" alt="Install AD"/>
+<img src="https://i.imgur.com/d4xCCv6.png" height="80%" width="80%" alt="Create OUs"/>
 </p>
 <p>
-1234123pus (make sure you use at least 2 otherwise it'll be slow).
+Here we will create two Organizational Units and name them "_EMPLOYEES" and "_ADMINS".
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/r1OnT8Y.png" height="80%" width="80%" alt="Create new Admin"/>
+</p>
+<p>
+Here we will create a new user in the admin OU. So just click on the "_ADMINS" OU folder then right click and create a new user. Make sure that you don't forget the password you used. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/cHMFKuy.png" height="80%" width="80%" alt="Add the user to Domain Admins"/>
+</p>
+<p>
+Now right-click on the user Jane and click "Add to a group...". Here you will type "domain" in the box and click "Check Names" and then click on Domain Admins and hit 'ok'.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/xG6w2GM.png" height="60%" width="60%" alt="Sign in as jane_admin"/>
+</p>
+<p>
+Close out of the RDP connection and sign back in using jane_admin. This is the Admin account we will use for the rest of the lab. 
 </p>
 <br />
