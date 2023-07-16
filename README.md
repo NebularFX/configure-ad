@@ -136,6 +136,8 @@ When you try to sign back in, use the domain name you used followed by a backsla
 </p>
 <br />
 
+<h3>Create an Admin and Normal User Account in AD</h3>
+
 <p>
 <img src="https://i.imgur.com/EOIk6jx.png" height="80%" width="80%" alt="Navigate to AD UandC"/>
 </p>
@@ -173,5 +175,110 @@ Now right-click on the user Jane and click "Add to a group...". Here you will ty
 </p>
 <p>
 Close out of the RDP connection and sign back in using jane_admin. This is the Admin account we will use for the rest of the lab. 
+</p>
+<br />
+
+<h3>Join Client-1 to your Domain</h3>
+
+<p>
+<img src="https://i.imgur.com/KL0LoGc.png" height="60%" width="60%" alt="Find DC-1 private ip"/>
+</p>
+<p>
+<img src="https://i.imgur.com/5QXTjYC.png" height="80%" width="80%" alt="Update Client-1 DNS"/>
+</p>
+<p>
+Head over to the azure portal and get the private IP address for DC-1. We will then navigate to the network settings of the Client-1 VM where we will click on the Network Interface. Here you will be able to access the DNS servers settings and change it to custom where you will insert the private IP of DC-1 and save the settings. 
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/6aW03Fn.png" height="80%" width="80%" alt="Restart Client-1 VM"/>
+</p>
+<p>
+<img src="https://i.imgur.com/E7lVK1i.png" height="80%" width="80%" alt="Ipconfig dns servers"/>
+</p>
+<p>
+Now we need to go to the Client-1 VM and restart it. Once it restarts and you login, you can open up command prompt and type "ipconfig /all". This will verify the address of the DNS Server address you setup in the azure portal.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/51Hvb09.png" height="80%" width="80%" alt="Right click start menu"/>
+</p>
+<p>
+<img src="https://i.imgur.com/UsH50uP.png" height="80%" width="80%" alt="Configure domain member"/>
+</p>
+<p>
+In order to configure Client-1 as a workstation within the domain, we will right click the start menu and click on system. Here you will find "Rename this PC (advanced)" and click on "change" within the System Properties window. Here you can enter the domain name (lab.com). You will need to sign in under the jane_admin credentials.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/3kp0aGw.png" height="60%" width="60%" alt="Configure domain member"/>
+</p>
+<p>
+Once you have finished you will get this pop-up and be instructed to restart. Let it restart and sign in with lab.com\jane_admin.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/XWkmkkQ.png" height="60%" width="60%" alt="Verify Client-1 in AD"/>
+</p>
+<p>
+Now go back to DC-1 and open AD Users and Computers again. Navigate to Computers under lab.com and you should see that our client has joined the domain.
+</p>
+<br />
+
+<h3>Setup Remote Desktop for Non-Administrative Users on Client-1</h3>
+
+<p>
+<img src="https://i.imgur.com/lRO2HB5.png" height="60%" width="60%" alt="Verify Client-1 in AD"/>
+</p>
+<p>
+If we go back to Client-1 and go back to system settings as we did earlier, you will find "Remote Desktop". Inside of that window you will find User accounts where you will add "Domain Users" that can remotely access the pc. We will be creating a long list of non-administrative users that will have the ability to sign in to this client using RDP.
+</p>
+<br />
+
+<h3>Create a bunch of additional users and attempt to log into client-1 with one of the users</h3>
+
+<p>
+<img src="https://i.imgur.com/9Vd2RGt.png" height="80%" width="80%" alt="Open Powershell"/>
+</p>
+<p>
+<img src="https://i.imgur.com/7CRmKLl.png" height="80%" width="80%" alt="Running Powershell Script"/>
+</p>
+<p>
+Sign back in to DC-1 using jane_admin if you haven't already. You will open Powershell ISE and run it as administrator. Once it opens you will create a new script and paste the code from this link (https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1). Once you have done that you can run the script and watch the users being created. 
+<p>
+*note: I recommend changing the amount of users to 1000 or less to speed up the process.
+</p>
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/LJ7V1uW.png" height="60%" width="60%" alt="Verify User Creation"/>
+</p>
+<p>
+Go back to AD Users and Computers and you will find our list of users are being created within our _EMPLOYEES folder. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/JaXXLFn.png" height="60%" width="60%" alt="Sign in with newly created account"/>
+</p>
+<p>
+Now we can open up a new RDP connection with Client-1 and use one of the new users we have created with our script. Simply choose a user within the _EMPLOYEES folder and use the password within the script (Password1) to sign in to Client-1 with that account. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/It0gyFl.png" height="60%" width="60%" alt="Whoami to show success"/>
+</p>
+<p>
+That concludes this tutorial, I hope you enjoyed it.
+</p>
+<p>
+Don't forget to clean up your Azure resources once you are done. Nobody likes a surprise bill at the end of the month!
 </p>
 <br />
