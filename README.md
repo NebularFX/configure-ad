@@ -102,7 +102,7 @@ Once you've completed that, you will see a response from DC-1 in Client-1's comm
 <img src="https://i.imgur.com/Sbveb3A.png" height="80%" width="80%" alt="Install AD"/>
 </p>
 <p>
-Now we can focus on installing Active Directory. First, open the DC-1 VM. You can open up command prompt and type hostname to quickly differntiate between both VMs. Head over to the server manager which can be found through the search bar or on the task bar. Next click on add roles and features. Here you will pretty much just click next until you get to server roles. This is where you will click on "Active Directory Domain Services". Just click next for the rest and install to finish.
+Now we can focus on installing Active Directory. First, open the DC-1 VM. You can open up command prompt and type hostname to quickly differentiate between both VMs. Head over to the server manager which can be found through the search bar or on the task bar. Next click on "add roles and features". Here you will pretty much just click "Next" until you get to server roles. This is where you will click on "Active Directory Domain Services". Just click "Next" for the rest and "Install" to finish.
 </p>
 <br />
 
@@ -113,7 +113,7 @@ Now we can focus on installing Active Directory. First, open the DC-1 VM. You ca
 <img src="https://i.imgur.com/SxZFeHV.png" height="60%" width="60%" alt="Root Domain Name"/>
 </p>
 <p>
-In order to finish installing AD, we need to click on promote server to domain controller and then add a new forest where you will set your desired domain name.
+In order to finish installing AD, we need to click on "Promote server to domain controller" and then add a new forest where you will set your desired domain name.
 </p>
 <br />
 
@@ -121,7 +121,7 @@ In order to finish installing AD, we need to click on promote server to domain c
 <img src="https://i.imgur.com/6yeflKg.png" height="80%" width="80%" alt="DSRM Password"/>
 </p>
 <p>
-You need to set a password here, but it won't be used for our purposes. You simply need to click next for the rest of the steps and then click install. Once it has installed, you will get notified that you will be signed out. This means you will need to reestablish the connection after you are disconnected from RDP.
+You need to set a password here, but it won't be used for our purposes. You simply need to click "Next" for the rest of the steps and then click "Install". Once it has installed, you will get notified that you will be signed out. This means you will need to re-establish the connection after you are disconnected from RDP.
 </p>
 <br />
 
@@ -139,7 +139,7 @@ When you try to sign back in, use the domain name you used followed by a backsla
 <img src="https://i.imgur.com/EOIk6jx.png" height="80%" width="80%" alt="Navigate to AD UandC"/>
 </p>
 <p>
-Now we need to navigate to Active Directory Users and Computers
+Let's create an Admin by first navigating to Active Directory Users and Computers
 </p>
 <br />
 
@@ -152,10 +152,10 @@ Here we will create two Organizational Units and name them "_EMPLOYEES" and "_AD
 <br />
 
 <p>
-<img src="https://i.imgur.com/r1OnT8Y.png" height="80%" width="80%" alt="Create new Admin"/>
+<img src="https://i.imgur.com/r1OnT8Y.png" height="60%" width="60%" alt="Create new Admin"/>
 </p>
 <p>
-Here we will create a new user in the admin OU. So just click on the "_ADMINS" OU folder then right click and create a new user. Make sure that you don't forget the password you used. 
+Let's create a new user in the admin OU. So just click on the "_ADMINS" OU folder then right-click and create a new user. Make sure that you don't forget the password you used. 
 </p>
 <br />
 
@@ -163,7 +163,7 @@ Here we will create a new user in the admin OU. So just click on the "_ADMINS" O
 <img src="https://i.imgur.com/cHMFKuy.png" height="80%" width="80%" alt="Add the user to Domain Admins"/>
 </p>
 <p>
-Now right-click on the user Jane and click "Add to a group...". Here you will type "domain" in the box and click "Check Names" and then click on Domain Admins and hit 'ok'.
+Now right-click on the user Jane and click "Add to a group...". Here you will type "domain" in the box and click "Check Names" and then click on "Domain Admins" and hit "OK".
 </p>
 <br />
 
@@ -178,13 +178,13 @@ Close out of the RDP connection and sign back in using jane_admin. This is the A
 <h3>Join Client-1 to your Domain</h3>
 
 <p>
-<img src="https://i.imgur.com/KL0LoGc.png" height="60%" width="60%" alt="Find DC-1 private ip"/>
+<img src="https://i.imgur.com/KL0LoGc.png" height="80%" width="80%" alt="Find DC-1 private ip"/>
 </p>
 <p>
 <img src="https://i.imgur.com/5QXTjYC.png" height="80%" width="80%" alt="Update Client-1 DNS"/>
 </p>
 <p>
-Head over to the azure portal and get the private IP address for DC-1. We will then navigate to the network settings of the Client-1 VM where we will click on the Network Interface. Here you will be able to access the DNS servers settings and change it to custom where you will insert the private IP of DC-1 and save the settings. 
+Head over to the Azure portal and get the private IP address for DC-1. We will then navigate to the network settings of the Client-1 VM where we will click on the Network Interface. Here you will be able to access the DNS servers settings and change it to custom where you will insert the private IP of DC-1 and save the settings. 
 </p>
 <br />
 
@@ -196,7 +196,7 @@ Head over to the azure portal and get the private IP address for DC-1. We will t
 <img src="https://i.imgur.com/E7lVK1i.png" height="80%" width="80%" alt="Ipconfig dns servers"/>
 </p>
 <p>
-Now we need to go to the Client-1 VM and restart it. Once it restarts and you login, you can open up command prompt and type "ipconfig /all". This will verify the address of the DNS Server address you setup in the azure portal.
+Now we need to go to the Client-1 VM and restart it. Once it restarts and you login, you can open up command prompt and type "ipconfig /all". This will verify the address of the DNS Server address you setup in the Azure portal.
 </p>
 <br />
 
@@ -207,7 +207,7 @@ Now we need to go to the Client-1 VM and restart it. Once it restarts and you lo
 <img src="https://i.imgur.com/UsH50uP.png" height="80%" width="80%" alt="Configure domain member"/>
 </p>
 <p>
-In order to configure Client-1 as a workstation within the domain, we will right click the start menu and click on system. Here you will find "Rename this PC (advanced)" and click on "change" within the System Properties window. Here you can enter the domain name (lab.com). You will need to sign in under the jane_admin credentials.
+In order to configure Client-1 as a workstation within the domain, we will right-click the start menu and click on "System". Here you will find "Rename this PC (Advanced)" and click on "Change" within the System Properties window. Here you can enter the domain name (lab.com). You will need to sign in under the jane_admin credentials.
 </p>
 <br />
 
@@ -215,7 +215,7 @@ In order to configure Client-1 as a workstation within the domain, we will right
 <img src="https://i.imgur.com/3kp0aGw.png" height="60%" width="60%" alt="Configure domain member"/>
 </p>
 <p>
-Once you have finished you will get this pop-up and be instructed to restart. Let it restart and sign in with lab.com\jane_admin.
+Once you have finished, you will get this pop-up and be instructed to restart. Let it restart and sign in with lab.com\jane_admin.
 </p>
 <br />
 
@@ -233,7 +233,7 @@ Now go back to DC-1 and open AD Users and Computers again. Navigate to Computers
 <img src="https://i.imgur.com/lRO2HB5.png" height="60%" width="60%" alt="Verify Client-1 in AD"/>
 </p>
 <p>
-If we go back to Client-1 and go back to system settings as we did earlier, you will find "Remote Desktop". Inside of that window you will find User accounts where you will add "Domain Users" that can remotely access the pc. We will be creating a long list of non-administrative users that will have the ability to sign in to this client using RDP.
+If we go back to Client-1 and go back to system settings as we did earlier, you will find "Remote Desktop". Inside of that window you will find "User accounts" where you will add "Domain Users" that can remotely access the pc. We will be creating a long list of non-administrative users that will have the ability to sign in to this client using RDP.
 </p>
 <br />
 
