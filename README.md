@@ -36,7 +36,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/Xvmv7Dk.png" height="80%" width="80%" alt="VM Settings"/>
 </p>
 <p>
-We need to start by creating a virtual machine. Here you can see I created a new resource group (AD-Lab), named the vm (DC-1), and used Windows Server 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
+Let's start this off by creating a virtual machine in Azure. Here you can see I created a new resource group (AD-Lab), named the VM (DC-1), and used Windows Server 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
 </p>
 <br />
 
@@ -47,7 +47,7 @@ We need to start by creating a virtual machine. Here you can see I created a new
 <img src="https://i.imgur.com/3UvROEL.png" height="80%" width="80%" alt="NIC settings"/>
 </p>
 <p>
-Now we need to set the IP configuration to a static IP address. Just go to the newly created vm and follow what I have highlighted. This will get you to where you can change the address from dynamic to static. 
+Now we'll set the IP configuration to a static IP address. Just go to the newly created VM and follow what I have highlighted. This will allow you to change the address from dynamic to static. 
 </p>
 <br />
 
@@ -68,7 +68,7 @@ Create another VM, but this time use Windows 10 and name it "Client-1". Go to th
 <img src="https://i.imgur.com/iBHTcmA.png" height="80%" width="80%" alt="Ping the domain controller"/>
 </p>
 <p>
-1323122131to start by creating a virtual machine. Here you can see I created a new resource group (AD-Lab), named the vm (DC-1), and used Windows Server 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
+This step is optional, but I'm doing it just to show prove that we can connect to the domain controller. Form a Remote Desktop connection with both Client-1 and DC-1 by using the their respective public IP addresses found in the Azure Portal. Open up command prompt on Client-1 and type "ping -t" followed by the private IP address of DC-1. You'll notice that our requests are timing out and that it will continuously ping DC-1 until we stop it.
 </p>
 <br />
 
@@ -76,7 +76,10 @@ Create another VM, but this time use Windows 10 and name it "Client-1". Go to th
 <img src="https://i.imgur.com/GOJSm9O.png" height="80%" width="80%" alt="Firewall Settings"/>
 </p>
 <p>
-12321erver 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
+<img src="https://i.imgur.com/rZPwHJj.png" height="80%" width="80%" alt="Enable ICMPv4 Inbound Traffic"/>
+</p>
+<p>
+We are going to go to DC-1 to allow these packets through the firewall. Begin by typing "firewall" in the search bar and click on the one I have selected above. Then go to inbound rules and filter the list by protocol and find the rules that utilize ICMPv4. Here you will find the two options pictured above that you need to right-click and enable. 
 </p>
 <br />
 
@@ -84,17 +87,11 @@ Create another VM, but this time use Windows 10 and name it "Client-1". Go to th
 <img src="https://i.imgur.com/oDlXX9H.png" height="80%" width="80%" alt="Response from Domain"/>
 </p>
 <p>
-4321123rver 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
+Once you've completed that, you will see a response from DC-1 in Client-1's command prompt.
 </p>
 <br />
 
-<p>
-<img src="https://i.imgur.com/rZPwHJj.png" height="80%" width="80%" alt="Enable ICMPv4 Inbound Traffic"/>
-</p>
-<p>
-432114rver 2022 with at least 2 vcpus (make sure you use at least 2 otherwise it'll be slow).
-</p>
-<br />
+
 
 <h3>Install Active Directory</h3>
 
